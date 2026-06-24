@@ -20,7 +20,7 @@
     "url": "git+https://github.com/kynnyhsap/askvid.git"
   },
   "bin": {
-    "askvid": "./dist/askvid.js"
+    "askvid": "dist/askvid.js"
   },
   "files": [
     "dist/",
