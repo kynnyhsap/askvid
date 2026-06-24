@@ -4,14 +4,12 @@
   "workspaces": {
     "": {
       "name": "askvid",
-      "dependencies": {
-        "@effect/ai-openrouter": "4.0.0-beta.74",
-        "@effect/platform-node": "4.0.0-beta.74",
-        "effect": "4.0.0-beta.74",
-      },
       "devDependencies": {
+        "@effect/ai-openrouter": "4.0.0-beta.74",
         "@effect/language-service": "0.86.2",
+        "@effect/platform-node": "4.0.0-beta.74",
         "@types/node": "25.7.0",
+        "effect": "4.0.0-beta.74",
         "oxfmt": "0.53.0",
         "oxlint": "1.68.0",
         "typescript": "7.0.1-rc",
