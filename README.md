@@ -24,17 +24,19 @@ existing `pi-read-video` backend behavior.
 
 ```sh
 bun install
-export OPENROUTER_API_KEY="sk-or-..."
+export ASKVID_OPENROUTER_API_KEY="sk-or-..."
 
 bun cli video.mp4 "summarize this"
 bun askvid --dry-run video.mp4 "summarize this"
 ```
 
-`OPENROUTER_API_KEY` is required for real OpenRouter requests. `--dry-run` does
+`ASKVID_OPENROUTER_API_KEY` is required for real OpenRouter requests. The CLI
+also supports `OPENROUTER_API_KEY` as a compatibility fallback. `--dry-run` does
 not call the model backend and does not require an API key.
 
 Useful env vars:
 
+- `ASKVID_OPENROUTER_API_KEY`: OpenRouter API key for askvid.
 - `ASKVID_DEBUG=1`: enable verbose stderr logs.
 - `ASKVID_BACKEND=openrouter`: select the backend. Use `test` for deterministic
   local/e2e runs.
@@ -74,7 +76,7 @@ bun run test:e2e
 Live OpenRouter e2e is opt-in:
 
 ```sh
-ASKVID_LIVE_E2E=1 OPENROUTER_API_KEY="sk-or-..." ASKVID_RESPONSE_CACHE=1 bun run test:e2e
+ASKVID_LIVE_E2E=1 ASKVID_OPENROUTER_API_KEY="sk-or-..." ASKVID_RESPONSE_CACHE=1 bun run test:e2e
 ```
 
 Response caching is practical for live e2e as long as the request body is
