@@ -1,6 +1,6 @@
 {
   "name": "askvid",
-  "version": "0.1.1",
+  "version": "0.1.2",
   "description": "Ask questions about local, remote, and YouTube videos from the command line.",
   "keywords": [
     "ai",
@@ -44,12 +44,15 @@
     "test": "node node_modules/vitest/vitest.mjs run",
     "test:e2e": "node node_modules/vitest/vitest.mjs run test/e2e"
   },
-  "devDependencies": {
+  "dependencies": {
     "@effect/ai-openrouter": "4.0.0-beta.74",
-    "@effect/language-service": "0.86.2",
     "@effect/platform-node": "4.0.0-beta.74",
+    "@effect/platform-node-shared": "4.0.0-beta.74",
+    "effect": "4.0.0-beta.74"
+  },
+  "devDependencies": {
+    "@effect/language-service": "0.86.2",
     "@types/node": "25.7.0",
-    "effect": "4.0.0-beta.74",
     "oxfmt": "0.53.0",
     "oxlint": "1.68.0",
     "typescript": "7.0.1-rc",
