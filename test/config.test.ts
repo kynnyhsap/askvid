@@ -19,6 +19,13 @@ describe("runtime config", () => {
     expect(result._tag).toBe("Failure");
   });
 
+  it("does not read the generic OpenRouter API key env var", async () => {
+    const result = await Effect.runPromiseExit(
+      loadRuntimeConfig.pipe(withEnv({ OPENROUTER_API_KEY: "secret" })),
+    );
+    expect(result._tag).toBe("Failure");
+  });
+
   it("loads the askvid-specific API key env var with defaults and cache settings", async () => {
     const config = await Effect.runPromise(
       loadRuntimeConfig.pipe(
@@ -36,13 +43,6 @@ describe("runtime config", () => {
     expect(config.maxTokens).toBe(DEFAULT_MAX_TOKENS);
     expect(config.responseCache).toEqual({ enabled: true, ttlSeconds: 120, clear: false });
     expect(config.debug).toBe(true);
-  });
-
-  it("falls back to OPENROUTER_API_KEY for compatibility", async () => {
-    const config = await Effect.runPromise(
-      loadRuntimeConfig.pipe(withEnv({ OPENROUTER_API_KEY: "secret" })),
-    );
-    expect(config.backend).toBe("openrouter");
   });
 
   it("loads dry-run config without an API key", async () => {

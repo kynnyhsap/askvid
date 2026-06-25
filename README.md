@@ -30,9 +30,8 @@ bun cli video.mp4 "summarize this"
 bun askvid --dry-run video.mp4 "summarize this"
 ```
 
-`ASKVID_OPENROUTER_API_KEY` is required for real OpenRouter requests. The CLI
-also supports `OPENROUTER_API_KEY` as a compatibility fallback. `--dry-run` does
-not call the model backend and does not require an API key.
+`ASKVID_OPENROUTER_API_KEY` is required for real OpenRouter requests. `--dry-run`
+does not call the model backend and does not require an API key.
 
 Useful env vars:
 

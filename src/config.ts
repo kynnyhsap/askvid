@@ -68,15 +68,11 @@ const appConfigFields = {
   debug: Config.boolean("ASKVID_DEBUG").pipe(Config.withDefault(false)),
 };
 
-const openRouterApiKeyConfig = Config.redacted("ASKVID_OPENROUTER_API_KEY").pipe(
-  Config.orElse(() => Config.redacted("OPENROUTER_API_KEY")),
-);
-
 export const appConfig = Config.all(appConfigFields).pipe(decodeConfig(AppConfig));
 
 export const runtimeConfig = Config.all({
   ...appConfigFields,
-  apiKey: openRouterApiKeyConfig,
+  apiKey: Config.redacted("ASKVID_OPENROUTER_API_KEY"),
 }).pipe(decodeConfig(RuntimeConfig));
 
 export const loadAppConfig: Effect.Effect<AppConfigType, Config.ConfigError> = appConfig;

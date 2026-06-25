@@ -16,7 +16,6 @@ const runCli = async (
     env: {
       ...process.env,
       ...env,
-      OPENROUTER_API_KEY: env.OPENROUTER_API_KEY,
     },
     stdio: ["ignore", "pipe", "pipe"],
   });
