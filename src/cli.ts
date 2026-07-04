@@ -2,6 +2,8 @@ import * as Console from "effect/Console";
 import * as Effect from "effect/Effect";
 import { Argument, Command, Flag } from "effect/unstable/cli";
 
+import packageJson from "../package.json" with { type: "json" };
+
 import { loadAppConfig } from "./config.ts";
 import { DryRunReport } from "./domain.ts";
 import { VideoSourceResolver } from "./source.ts";
@@ -89,4 +91,4 @@ export const askvidCommand = Command.make(
   ),
 );
 
-export const runAskvid = Command.run(askvidCommand, { version: "0.1.0" });
+export const runAskvid = Command.run(askvidCommand, { version: packageJson.version });

@@ -5,6 +5,8 @@ import { join } from "node:path";
 import * as Schema from "effect/Schema";
 import { describe, expect, it } from "vitest";
 
+import packageJson from "../../package.json" with { type: "json" };
+
 import { DryRunReport } from "../../src/domain.ts";
 
 const runCli = async (
@@ -36,6 +38,12 @@ describe("askvid CLI e2e", () => {
     expect(result.stdout).toContain("askvid");
     expect(result.stdout).toContain("video-source");
     expect(result.stdout).toContain("question");
+  });
+
+  it("prints the package version", async () => {
+    const result = await runCli(["--version"]);
+    expect(result.exitCode).toBe(0);
+    expect(result.stdout.trim()).toBe(`askvid v${packageJson.version}`);
   });
 
   it("runs dry-run against a local video path without an API key", async () => {

@@ -1,6 +1,6 @@
 {
   "name": "askvid",
-  "version": "0.1.4",
+  "version": "0.1.5",
   "description": "Ask questions about local, remote, and YouTube videos from the command line.",
   "keywords": [
     "ai",
