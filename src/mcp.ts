@@ -4,7 +4,7 @@ import * as Effect from "effect/Effect";
 import * as Layer from "effect/Layer";
 import * as Logger from "effect/Logger";
 import * as Schema from "effect/Schema";
-import { McpSchema, McpServer, Tool as AiTool } from "effect/unstable/ai";
+import { McpSchema, McpServer } from "effect/unstable/ai";
 
 import packageJson from "../package.json" with { type: "json" };
 
@@ -26,7 +26,23 @@ const AskVideoToolInput = Schema.Struct({
   ),
 });
 
-const askVideoInputJsonSchema = AiTool.getJsonSchemaFromSchema(AskVideoToolInput);
+const askVideoInputJsonSchema = {
+  type: "object",
+  properties: {
+    videoPath: {
+      type: "string",
+      minLength: 1,
+      description: "Local path, file:// URL, remote video URL, or YouTube URL.",
+    },
+    query: {
+      type: "string",
+      minLength: 1,
+      description: "Question or instruction to answer from the video.",
+    },
+  },
+  required: ["videoPath", "query"],
+  additionalProperties: false,
+} as const;
 const decodeAskVideoToolInput = Schema.decodeUnknownEffect(AskVideoToolInput);
 
 const textToolResult = (text: string, isError = false) =>

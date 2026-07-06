@@ -139,6 +139,10 @@ describe("askvid MCP e2e", () => {
           {
             name: "ask_video",
             inputSchema: {
+              properties: {
+                videoPath: { type: "string" },
+                query: { type: "string" },
+              },
               required: ["videoPath", "query"],
             },
           },
