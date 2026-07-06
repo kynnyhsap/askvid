@@ -6,6 +6,7 @@ import packageJson from "../package.json" with { type: "json" };
 
 import { loadAppConfig } from "./config.ts";
 import { DryRunReport } from "./domain.ts";
+import { runMcpServer } from "./mcp.ts";
 import { VideoSourceResolver } from "./source.ts";
 import { VideoQueryService } from "./video-query.ts";
 
@@ -29,7 +30,7 @@ const debugFlag = Flag.boolean("debug").pipe(
   Flag.withDefault(false),
 );
 
-export const askvidCommand = Command.make(
+const askvidQueryCommand = Command.make(
   "askvid",
   {
     videoSource: videoSourceArgument,
@@ -90,5 +91,12 @@ export const askvidCommand = Command.make(
     "Ask questions about a local, remote, or YouTube video using a video model backend.",
   ),
 );
+
+export const mcpCommand = Command.make("mcp", {}, () => runMcpServer).pipe(
+  Command.withDescription("Run askvid as a Model Context Protocol server over stdio."),
+  Command.withShortDescription("Run an MCP server over stdio."),
+);
+
+export const askvidCommand = askvidQueryCommand.pipe(Command.withSubcommands([mcpCommand]));
 
 export const runAskvid = Command.run(askvidCommand, { version: packageJson.version });

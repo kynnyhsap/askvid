@@ -13,6 +13,7 @@ The CLI shape is:
 
 ```sh
 askvid [--dry-run] [--debug] <video-source> <question>
+askvid mcp
 ```
 
 `video-source` can be a local path, `file://` URL, remote video URL, or YouTube URL.
@@ -82,3 +83,15 @@ Response caching is practical for live e2e as long as the request body is
 byte-identical: same API key, model, endpoint, streaming mode, request JSON
 property order, prompt, and video URL/base64 bytes. YouTube URL e2e requests are
 the easiest to cache because the video input string is stable.
+
+## MCP server
+
+Run askvid as a local Model Context Protocol server over stdio:
+
+```sh
+askvid mcp
+```
+
+The server exposes one tool, `ask_video`, with `videoPath` and `query`
+arguments. It uses the same backend, source resolution, model, and cache
+environment variables as the normal CLI flow.

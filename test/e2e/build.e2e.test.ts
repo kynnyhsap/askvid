@@ -28,6 +28,11 @@ describe("built CLI e2e", () => {
     expect(build.exitCode, build.stderr).toBe(0);
     await access(join(process.cwd(), "dist", "askvid.js"));
 
+    const mcpHelp = await run(["node", "dist/askvid.js", "mcp", "--help"]);
+    expect(mcpHelp.exitCode, mcpHelp.stderr).toBe(0);
+    expect(mcpHelp.stdout).toContain("USAGE");
+    expect(mcpHelp.stdout).toContain("askvid mcp [flags]");
+
     const dir = await mkdtemp(join(tmpdir(), "askvid-built-e2e-"));
     try {
       const video = join(dir, "tiny.mp4");
