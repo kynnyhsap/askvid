@@ -4,7 +4,6 @@ import { describe, expect, it } from "vitest";
 
 import {
   DEFAULT_MAX_TOKENS,
-  DEFAULT_MODEL,
   loadAppConfig,
   loadRuntimeConfig,
   testConfigProvider,
@@ -39,7 +38,7 @@ describe("runtime config", () => {
     );
 
     expect(config.backend).toBe("openrouter");
-    expect(config.model).toBe(DEFAULT_MODEL);
+    expect(config.model).toBe("google/gemini-3.8-flash");
     expect(config.maxTokens).toBe(DEFAULT_MAX_TOKENS);
     expect(config.responseCache).toEqual({ enabled: true, ttlSeconds: 120, clear: false });
     expect(config.debug).toBe(true);

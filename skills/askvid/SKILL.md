@@ -47,7 +47,7 @@ bunx askvid --debug "<video-source>" "<question>"
 Default model:
 
 ```bash
-google/gemini-3.1-pro-preview
+google/gemini-3.8-flash
 ```
 
 `askvid` does not keep a model allowlist. It passes `ASKVID_MODEL` directly to OpenRouter, so the available models are the current OpenRouter models whose `input_modalities` include `video`.
@@ -66,7 +66,7 @@ for (const m of body.data.filter((m) => m.architecture?.input_modalities?.includ
 Override the model:
 
 ```bash
-ASKVID_MODEL="google/gemini-3.1-pro-preview" bunx askvid "<video-source>" "<question>"
+ASKVID_MODEL="google/gemini-3.8-flash" bunx askvid "<video-source>" "<question>"
 ```
 
 Keep the default unless the user asks to compare models or a model-specific failure requires a retry. For long videos, prefer a narrow prompt before changing models.
@@ -130,7 +130,7 @@ bunx askvid "<demo.mp4>" \
 
 ```bash
 ASKVID_OPENROUTER_API_KEY   # required for real OpenRouter requests
-ASKVID_MODEL                # model override, defaults to google/gemini-3.1-pro-preview
+ASKVID_MODEL                # model override, defaults to google/gemini-3.8-flash
 ASKVID_MAX_TOKENS           # answer budget, defaults to 6000
 ASKVID_DEBUG=1              # verbose stderr logs
 ASKVID_RESPONSE_CACHE=1     # enable OpenRouter response cache header

@@ -15,7 +15,7 @@ import {
 
 export type { ResponseCacheConfig } from "./domain.ts";
 
-export const DEFAULT_MODEL = "google/gemini-3.1-pro-preview";
+export const DEFAULT_MODEL = "google/gemini-3.8-flash";
 export const DEFAULT_MAX_TOKENS = 6000;
 export const MAX_INLINE_BYTES = 100 * 1024 * 1024;
 
