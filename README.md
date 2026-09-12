@@ -40,7 +40,7 @@ Useful env vars:
 - `ASKVID_DEBUG=1`: enable verbose stderr logs.
 - `ASKVID_BACKEND=openrouter`: select the backend. Use `test` for deterministic
   local/e2e runs.
-- `ASKVID_MODEL=google/gemini-3.1-pro-preview`: override the default model.
+- `ASKVID_MODEL`: override the default model (`google/gemini-3.8-flash`).
 - `ASKVID_RESPONSE_CACHE=1`: send `X-OpenRouter-Cache: true`.
 - `ASKVID_RESPONSE_CACHE_TTL=86400`: set response-cache TTL in seconds.
 - `ASKVID_RESPONSE_CACHE_CLEAR=1`: refresh the current cache key.
